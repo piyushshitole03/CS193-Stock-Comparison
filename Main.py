@@ -1,31 +1,40 @@
 import yfinance as yf
 
-# Get user input for stock tickers
-a = input("Enter the first stock: ")
-b = input("Enter the second stock: ")
+# STEP 1: Ask for two stocks and get their data
+while True:
+    a = input("Enter the first stock: ").strip().upper()
+    b = input("Enter the second stock: ").strip().upper()
 
-s1 = yf.Ticker(a)
-s2 = yf.Ticker(b)
+    if a == "" or b == "" or a == b:
+        print("Please enter two different stock tickers.")
+        continue
 
-# Fetch metrics
-t_pe1 = s1.info.get("trailingPE")
-t_pe2 = s2.info.get("trailingPE")
+    try:
+        s1 = yf.Ticker(a)
+        s2 = yf.Ticker(b)
+        info1 = s1.info
+        info2 = s2.info
+    except Exception:
+        print("Could not get stock data. Please try again.")
+        continue
 
-f_pe1 = s1.info.get("forwardPE")
-f_pe2 = s2.info.get("forwardPE")
+    t_pe1 = info1.get("trailingPE")
+    t_pe2 = info2.get("trailingPE")
+    f_pe1 = info1.get("forwardPE")
+    f_pe2 = info2.get("forwardPE")
+    rev1 = info1.get("revenueGrowth")
+    rev2 = info2.get("revenueGrowth")
 
-rev1 = s1.info.get("revenueGrowth")
-rev2 = s2.info.get("revenueGrowth")
+    if (t_pe1 is None or t_pe2 is None or
+        f_pe1 is None or f_pe2 is None or
+        rev1 is None or rev2 is None):
+        print("Invalid ticker or missing financial data. Try again.")
+        continue
 
-div1 = s1.info.get("dividendYield")
-div2 = s2.info.get("dividendYield")
+    if t_pe1 <= 0 or t_pe2 <= 0 or f_pe1 <= 0 or f_pe2 <= 0:
+        print("This version only compares stocks with positive P/E ratios.")
+        continue
 
-# Print headers
-print(f"{"Metric":<20}{a:>12}{b:>12}")
-print("-" * 44)
+    break
 
-# Print metrics row by row using your formatting style
-print(f'{"Trailing P/E":<20}{t_pe1:>12.2f}{t_pe2:>12.2f}')
-print(f'{"Forward P/E":<20}{f_pe1:>12.2f}{f_pe2:>12.2f}')
-print(f'{"Revenue Growth":<20}{rev1 * 100:>11.2f}%{rev2 * 100:>11.2f}%')
-print(f'{"Dividend Yield":<20}{div1:>11.2f}%{div2:>11.2f}%')
+print("Stock data loaded successfully!")
