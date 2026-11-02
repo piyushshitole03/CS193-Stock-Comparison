@@ -1,136 +1,130 @@
-Stock Comparison and Recommendation Tool
+# Stock Comparison and Recommendation Tool
 
-A Python-based stock comparison tool designed to help investors evaluate two stocks using financial metrics and make more informed investment decisions.
+A Python-based stock comparison tool designed to help investors evaluate two publicly traded companies using financial metrics and make more informed investment decisions.
 
-The Problem
+## The Problem
 
-Whenever I try to research a stock to invest in, I end up with 2 really good companies which have similar financial metrics, but different valuation. I want to address the difficulty of comparing these investments objectively and determining which stock might offer better value. 
+Whenever I research stocks to invest in, I often end up choosing between two promising companies with similar financial metrics but different valuations. This creates a dilemma when deciding which stock offers better investment value.
 
-Project Goal
+This project aims to simplify that decision by providing a structured comparison of important financial indicators.
 
-The goal is to develop a simple command-line application that compares two publicly traded stocks using financial indicators. The program will provide an explainable, rules-based recommendation rather than relying on predictions of future stock prices.
+## How It Works
 
-MVP Features (Version 1.0)
+The Stock Comparison and Recommendation Tool will retrieve financial data for two user-selected stocks using Yahoo Finance through the Python `yfinance` library.
 
-Accept two stock ticker symbols from the user.
+My Minimum Viable Product (MVP) will include:
 
-Retrieve financial information using Yahoo Finance.
+1. **Stock Input:** Allow users to enter two stock ticker symbols through a Python command-line interface.
+2. **Financial Data Retrieval:** Use `yfinance` to retrieve trailing P/E ratios, forward P/E ratios, revenue growth, and dividend yields.
+3. **Stock Comparison:** Display the financial metrics of both companies side by side to evaluate their relative valuations and growth.
+4. **Dividend Preference:** Allow users to choose whether dividend yield should influence the recommendation.
+5. **Stock Recommendation:** Implement a rules-based scoring system to recommend a stock based on financial metrics and explain the reasoning behind the result.
+6. **Error Handling:** Handle invalid ticker symbols and missing financial information.
 
-Compare trailing P/E ratios, forward P/E ratios, and revenue growth.
+### System Architecture
 
-Allow users to optionally prioritize dividend yield.
+![Stock Comparison System Diagram](docs/System%20Diagram.jpg)
 
-Generate a recommendation based on predefined financial criteria.
+The system will accept two stock ticker symbols, retrieve their financial information from Yahoo Finance, compare the available metrics, and provide an investment recommendation based on predefined criteria.
 
-Explain the reasoning behind the recommendation.
+## Tech Stack
 
-Handle invalid stock symbols and unavailable financial data.
+1. **Programming Language:** Python 3.12
+2. **Python Libraries:** `yfinance`
+3. **External Data Source:** Yahoo Finance, accessed through `yfinance`
+4. **User Interface:** Command-Line Interface (CLI)
+5. **Development Environment:** VS Code / PyCharm
+6. **Data Storage:** No persistent storage required for Version 1.0.
+7. **Version Control:** Git and GitHub
 
-How It Works
+## Setup
 
-The application will retrieve financial data for two user-selected stocks through the yfinance library and display their financial metrics side by side.
+**Status: Under Development**
 
-I plan to build a Python-based tool that takes two stock ticker symbols and retrieves their financial data using Yahoo finance. The program will compare key metrics such as trailing and forward P/E ratios and revenue growth to provide an explainable stock recommendation, with an optional preference for dividend income.
+The following instructions cover the initial Python environment setup. Instructions for running the completed application will be added during development.
 
-System Diagram
+**Prerequisites:**
 
-System Diagram.jpg
+- Python 3.12
+- Git
+- pip (Python package manager)
 
-Tech Stack
+**Clone the repository:**
 
-Programming Language: Python 3.12
+```bash
+git clone https://github.com/piyushshitole03/CS193-Stock-Comparison.git
+cd CS193-Stock-Comparison
+```
 
-Financial Data Source: Yahoo Finance
+**Install the required Python library (Windows):**
 
-External Library: yfinance
+```powershell
+py -3.12 -m pip install yfinance
+```
 
-User Interface: Command-Line Interface (CLI)
+The financial data source has already been tested by retrieving financial metrics for Microsoft and dividend information for Amazon.
 
-Development Tools: VS Code / PyCharm
+Additional instructions for running the completed application will be provided as development progresses.
 
-Version Control: Git and GitHub
+## Usage
 
-Data Storage: No persistent storage required for the MVP.
+**Status: Not Yet Implemented**
 
-Setup
+Once developed, users will be able to:
 
-The application is currently under development.
+1. Start the application through their terminal.
+2. Enter the ticker symbols of two stocks they wish to compare.
+3. Choose whether dividend income should influence the recommendation.
+4. View a comparison of trailing P/E, forward P/E, and revenue growth.
+5. Receive a stock recommendation with an explanation of the factors behind the decision.
 
-Python 3.12 is required. The financial data library can be installed using:
+Detailed execution instructions and sample outputs will be added once the MVP is functional.
 
-python -m pip install yfinance
+## Roadmap
 
-Additional installation and execution instructions will be added as the application is developed and tested.
+### Version 1.0 — MVP
 
-Usage
+- [ ] Set up the GitHub repository and initial project documentation.
+- [ ] Test financial data retrieval using `yfinance`.
+- [ ] Implement financial data retrieval in the application.
+- [ ] Accept and validate two stock ticker symbols.
+- [ ] Display financial metrics in a readable comparison.
+- [ ] Handle invalid ticker symbols and missing financial data.
+- [ ] Implement a rules-based stock recommendation system.
+- [ ] Include an optional dividend preference.
+- [ ] Test the complete application and update documentation.
 
-The planned application workflow is:
+### Version 2.0 — Future Improvements
 
-Start the Python application.
+- [ ] Develop an interactive website using Streamlit.
+- [ ] Add financial charts and stock performance visualizations.
+- [ ] Implement Monte Carlo simulations for portfolio risk analysis.
 
-Enter two stock ticker symbols.
+## Project Documentation
 
-Select whether dividend income should influence the recommendation.
+The `docs/` directory contains the planning documents for this project, including:
 
-View a comparison of financial metrics.
+- Eisenhower Matrix
+- System Flowchart
+- Editable draw.io System Diagram
 
-Receive a stock recommendation with an explanation.
+## Current Development Status
 
-The complete application and verified usage instructions will be added during development.
+The project is currently in its planning and initial development stage. Financial data retrieval has been successfully tested using `yfinance`, but the complete stock comparison and recommendation system has not yet been implemented.
 
-Roadmap
+## Limitations
 
-Version 1.0 — MVP
+- Financial information depends on the availability and accuracy of Yahoo Finance data.
+- Certain companies may not have all financial indicators available.
+- Recommendations will be based on predefined rules rather than predictions of future stock performance.
+- Financial metrics alone cannot guarantee investment returns.
 
-Set up the project structure and Git repository.
+## Disclaimer
 
-Retrieve financial data for individual stocks.
+This application is being developed for educational purposes as part of CS 193 at Purdue University. Its recommendations are informational and should not be considered professional financial advice.
 
-Accept and validate two stock ticker symbols.
+## Author
 
-Display financial metrics in a comparison table.
+**Piyush Dhananjay Shitole**
 
-Handle missing or invalid financial data.
-
-Implement rules-based stock recommendations.
-
-Include an optional dividend preference.
-
-Test the application and improve documentation.
-
-Version 2.0 — Future Improvements
-
-Build an interactive website using Streamlit.
-
-Add financial charts and visualizations.
-
-Implement Monte Carlo simulations for portfolio risk analysis.
-
-Project Documentation
-
-The docs/ directory contains project planning materials:
-
-Eisenhower Matrix
-
-System Flowchart (PNG)
-
-Editable System Diagram (draw.io)
-
-Current Status
-
-Project planning and initial data-source testing have been completed. Financial information retrieval has been tested using Python and yfinance. The full application has not yet been implemented.
-
-Limitations
-
-Financial data depends on Yahoo Finance availability.
-
-Some companies may not have all required financial metrics.
-
-Financial indicators do not guarantee future stock performance.
-
-Recommendations will depend on predefined comparison rules.
-
-Author
-
-Piyush Dhananjay Shitole
-GITHUB: https://github.com/piyushshitole03
+GitHub: [https://github.com/piyushshitole03](https://github.com/piyushshitole03)
