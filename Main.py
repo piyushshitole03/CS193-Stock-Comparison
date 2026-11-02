@@ -71,3 +71,53 @@ print(f"{'Trailing P/E':<20}{t_pe1:>12.2f}{t_pe2:>12.2f}")
 print(f"{'Forward P/E':<20}{f_pe1:>12.2f}{f_pe2:>12.2f}")
 print(f"{'Revenue Growth':<20}{rev1 * 100:>11.2f}%{rev2 * 100:>11.2f}%")
 print(f"{'Dividend Yield':<20}{div_text1:>12}{div_text2:>12}")
+
+
+# STEP 3: Compare stocks and assign points
+
+score1 = 0
+score2 = 0
+
+reasons1 = []
+reasons2 = []
+
+# Compare Trailing P/E (lower is better)
+if t_pe1 < t_pe2:
+    score1 += 1
+    reasons1.append("Lower Trailing P/E")
+elif t_pe2 < t_pe1:
+    score2 += 1
+    reasons2.append("Lower Trailing P/E")
+
+# Compare Forward P/E (lower is better)
+if f_pe1 < f_pe2:
+    score1 += 1
+    reasons1.append("Lower Forward P/E")
+elif f_pe2 < f_pe1:
+    score2 += 1
+    reasons2.append("Lower Forward P/E")
+
+# Compare Revenue Growth (higher is better)
+if rev1 > rev2:
+    score1 += 1
+    reasons1.append("Higher Revenue Growth")
+elif rev2 > rev1:
+    score2 += 1
+    reasons2.append("Higher Revenue Growth")
+
+# Ask if the user wants to prioritize dividends
+choice = input("\nDo you prioritize dividends? (yes/no): ").lower()
+
+if choice == "yes":
+    if div1 is not None and div2 is not None:
+        if div1 > div2:
+            score1 += 1
+            reasons1.append("Higher Dividend Yield")
+        elif div2 > div1:
+            score2 += 1
+            reasons2.append("Higher Dividend Yield")
+    else:
+        print("Dividend data unavailable, skipping dividend comparison.")
+
+print(f"\n{a} Score: {score1}")
+print(f"{b} Score: {score2}")
