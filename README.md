@@ -84,8 +84,8 @@ Detailed execution instructions and sample outputs will be added once the MVP is
 
 ### Version 1.0 — MVP
 
-- [ ] Set up the GitHub repository and initial project documentation.
-- [ ] Test financial data retrieval using `yfinance`.
+- [x] Set up the GitHub repository and initial project documentation.
+- [x] Test financial data retrieval using `yfinance`.
 - [ ] Implement financial data retrieval in the application.
 - [ ] Accept and validate two stock ticker symbols.
 - [ ] Display financial metrics in a readable comparison.
