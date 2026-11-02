@@ -38,3 +38,36 @@ while True:
     break
 
 print("Stock data loaded successfully!")
+
+
+# STEP 2: Show a comparison table
+
+div1 = info1.get("dividendYield")
+div2 = info2.get("dividendYield")
+
+
+# Ignore suspicious or missing values
+if div1 is not None and (div1 < 0 or div1 > 20):
+    div1 = None
+
+if div2 is not None and (div2 < 0 or div2 > 20):
+    div2 = None
+
+# Format dividend yields
+if div1 is None:
+    div_text1 = "N/A"
+else:
+    div_text1 = f"{div1:.2f}%"
+
+if div2 is None:
+    div_text2 = "N/A"
+else:
+    div_text2 = f"{div2:.2f}%"
+
+print(f"\n{'Metric':<20}{a:>12}{b:>12}")
+print("-" * 44)
+
+print(f"{'Trailing P/E':<20}{t_pe1:>12.2f}{t_pe2:>12.2f}")
+print(f"{'Forward P/E':<20}{f_pe1:>12.2f}{f_pe2:>12.2f}")
+print(f"{'Revenue Growth':<20}{rev1 * 100:>11.2f}%{rev2 * 100:>11.2f}%")
+print(f"{'Dividend Yield':<20}{div_text1:>12}{div_text2:>12}")
